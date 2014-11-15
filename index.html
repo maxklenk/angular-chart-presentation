@@ -9,9 +9,14 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="bower_components/impress.js/css/impress-demo.css" rel="stylesheet" />
-    <link href="css/presentation.css" rel="stylesheet" />
-    
+
+    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/c3/c3.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-circular-navigation/angular-circular-navigation.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/impress.js/css/impress-demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/presentation.css" />
+
     <!-- <link rel="shortcut icon" href="favicon.png" /> -->
     <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png" /> -->
 </head>
@@ -35,7 +40,28 @@
     </div>
 
     <!-- Add Slides -->
+    <div class="step slide" data-x="0" data-y="-1500">
+        
+        AngularJS
+        <code>
+            <input type="text" ng-model="yourName" placeholder="Enter a name here">
+      <hr>
+      <h1>Hello {{yourName}}!</h1>
+  </code>
 
+        <div ng-app>
+          <div class="form-inline">
+            <label>Name:</label>
+            <input type="text" ng-model="yourName" placeholder="Enter a name here" class=" form-control">
+            <hr>
+            <h1>Hello {{yourName}}!</h1>
+          </div>
+        </div>
+
+        <div class="notes">
+            AngularJS lives in the DOM and does not manipulate it from outside, like jQuery.
+        </div>
+    </div>
 
 
 
@@ -61,8 +87,16 @@ if ("ontouchstart" in document.documentElement) {
 </script>
 -->
 
-<script src="bower_components/impress.js/js/impress.js"></script>
-<script src="js/impressConsole.js"></script>
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
+<script type="text/javascript" src="bower_components/c3/c3.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-circular-navigation/angular-circular-navigation.js"></script>
+<script type="text/javascript" src="bower_components/angular-chart/angular-chart.js"></script>
+<script type="text/javascript" src="bower_components/impress.js/js/impress.js"></script>
+<script type="text/javascript" src="js/impressConsole.js"></script>
+<script type="text/javascript" src="js/data.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+
 <script>
     impress().init();
     impressConsole().init();

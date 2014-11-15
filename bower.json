@@ -2,6 +2,9 @@
   "name": "angular-chart-presentation",
   "version": "0.0.0",
   "dependencies": {
-    "impress.js": "~0.5.3"
+    "impress.js": "~0.5.3",
+    "angular-chart": "~0.2.3",
+    "font-awesome": "~4.2.0",
+    "bootstrap": "~3.3.1"
   }
 }

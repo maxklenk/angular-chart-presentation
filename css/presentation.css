@@ -1,3 +1,7 @@
 .notes {
 	display: none;
 }
+
+.form-control {
+	font-size: 24px;
+}
