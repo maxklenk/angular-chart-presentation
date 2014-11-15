@@ -1,0 +1,12 @@
+#IntelliJ project settings
+.idea
+*.iml
+
+# node packages
+node_modules
+
+# bower packages
+bower_components
+
+# temporary editor files
+*~
