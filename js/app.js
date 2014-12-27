@@ -39,9 +39,6 @@ angular.module('approach', ['angularChart', 'angularCircularNavigation'])
     }];
 
   $scope.options = {
-    'size': {
-      'width': 800
-    },
     'rows': rows,
     'xAxis': xAxis,
     'typeSelector': true,

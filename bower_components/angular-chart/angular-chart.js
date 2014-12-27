@@ -27,6 +27,10 @@
 
           scope.chart = null;
           scope.configuration = {
+            size: {
+              height: 350,
+              width: 900
+            },
             data: {
               keys: {
                 value: [],
