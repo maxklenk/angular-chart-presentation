@@ -1,105 +1,1085 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=1024" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title></title>
-    
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=1024" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>angular-chart</title>
+  
+  <meta name="description" content="angular-chart: Real time collaborative Visual Analytics with AngularJS and D3.js" />
+  <meta name="author" content="Max Klenk" />
 
+  <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="bower_components/c3/c3.css" />
+  <link rel="stylesheet" type="text/css" href="bower_components/angular-circular-navigation/angular-circular-navigation.css" />
+  <link rel="stylesheet" type="text/css" href="bower_components/impress.js/css/impress-demo.css" />
+  <link rel="stylesheet" type="text/css" href="bower_components/angular-circular-navigation/angular-circular-navigation.css">
+  <link rel="stylesheet" type="text/css" href="css/presentation.css" />
 
-    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="bower_components/c3/c3.css" />
-    <link rel="stylesheet" type="text/css" href="bower_components/angular-circular-navigation/angular-circular-navigation.css" />
-    <link rel="stylesheet" type="text/css" href="bower_components/impress.js/css/impress-demo.css" />
-    <link rel="stylesheet" type="text/css" href="css/presentation.css" />
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
 
-    <!-- <link rel="shortcut icon" href="favicon.png" /> -->
-    <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png" /> -->
+  <script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
+  <script type="text/javascript" src="bower_components/c3/c3.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-circular-navigation/angular-circular-navigation.js"></script>
+  <script type="text/javascript" src="bower_components/angular-chart/angular-chart.js"></script>
+  <script type="text/javascript" src="js/data.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+
+  <!-- <link rel="shortcut icon" href="favicon.png" /> -->
+  <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png" /> -->
 </head>
 
-<body class="impress-not-supported">
+<body class="impress-not-supported" ng-app="approach">
 
 <div class="fallback-message">
-    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
-    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+  <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+  <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
 </div>
 
 <div id="impress">
 
-    <!-- A Slide -->
-    <div class="step slide" data-x="-1000" data-y="-1500">
-        <q>Aren't you just <b>bored</b> with all those slides-based presentations?</q>
-
-        <div class="notes">
-            First slide notes
-        </div>
-    </div>
-
-    <!-- Add Slides -->
-    <div class="step slide" data-x="0" data-y="-1500">
-        
-        AngularJS
-        <code>
-            <input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <hr>
-      <h1>Hello {{yourName}}!</h1>
-  </code>
-
-        <div ng-app>
-          <div class="form-inline">
-            <label>Name:</label>
-            <input type="text" ng-model="yourName" placeholder="Enter a name here" class=" form-control">
-            <hr>
-            <h1>Hello {{yourName}}!</h1>
-          </div>
-        </div>
-
-        <div class="notes">
-            AngularJS lives in the DOM and does not manipulate it from outside, like jQuery.
-        </div>
-    </div>
-
-
-
-
-
-
-
-    <!-- Overview -->
-    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+  <!-- Title -->
+  <div id="title" class="step view title" data-x="4000" data-y="-3000" data-scale="7">
     
+    <div style="margin-top: 70px; height: 220px">
+      <img class="logo_surveyor" src="img/logo_uni.png">
+      <img class="logo_adviser" src="img/logo_onelogic.svg">
     </div>
+
+    <h2>angular-chart<h2>
+
+    <h3>Real time collaborative Visual Analytics with AngularJS and D3.js</h3>
+
+    <span class="surveyor">
+      Surveyor
+      <br/>
+      <b>Prof. Dr. Michael Granitzer</b>
+    </span>
+
+    <span class="adviser">
+      Adviser
+      <br/>
+      <b>Dr. Robert Basmadjian</b>
+    </span>
+
+    <span class="author">
+      Author
+      <br/>
+      <b>Max Klenk</b>
+    </span>
+
+
+    <div class="notes">
+      Ich möchte euch heute meine Bachelorarbeit vorstellen. Ich habe sie bei Prof. Granitzer in Kooperation mit dem Passauer Startup ONE LOGIC geschrieben. Bei ONE LOGIC hat mich Robert Basmadjian betreut.<br/>
+      Wie der Titel schon sagt, befasse ich mich damit wie man collaborativ Daten visualisieren kann um daraus nachhalti Wissen zu generien.<br/>
+      Ich werde euch erst erklären warum das überhaupt wichtig ist. Dann die potentiellen Tools zeigen mit denen man die Problematik angehen kann, bevor ich euch meine Lösung zeige. Die Usability meines Tools habe ich in einer Studie untersucht und natürlich gibt es noch eine ganze Menge Möglichkeiten auf meiner Arbeit aufzubauen.
+    </div>
+  </div>
+
+
+
+  <!-- MOTIVATION -->
+    <div class="step chapter" data-x="1000" data-y="-1000">
+      <h1>Motivation</h1>
+
+      <div class="notes">
+        Wie gesagt möchte ich euch erst zeigen was überhaupt das Problem ist.
+      </div>
+    </div>
+
+    <!-- The Problem - Big Data -->
+    <div class="step view" data-x="1000" data-y="-250">
+      <span class="page-number">1/31</span>
+      <h1>Motivation</h1>
+        <h2>The Problem</h2>
+
+      <img src="img/big-data.png" style="margin-top: 30px;">
+      <span class="img-src">Source: http://quipro.mx/sites/default/files/bigdata.png</span>
+
+      <div class="notes">
+        Die ganze Welt redet über Big Data, Unternehmen sammeln Daten wie wild und Regirungen stellen öffentlich Daten ins Netz. Vor zwei Wochen haben wir vorgestellt bekommen wie schwierig es ist diese Daten zusammen zu bringen und daraus Erkenntnis zu bekommen.
+      </div>
+    </div>
+
+    <!-- The Problem - static charts -->
+    <div class="step view" data-x="1000" data-y="500">
+      <span class="page-number">2/31</span>
+      <h1>Motivation</h1>
+        <h2>The Problem</h2>
+
+      <img src="img/simple-chart.png" style="margin-top: 40px;">
+      <span class="img-src">Source: self-made</span>
+
+      <div class="notes">
+        Das Ergebnis dieser ganzen Arbeit sind allerdings meist statische Diagramme, in denen viel Information verloren geht. Zum Beispiel kann man nicht mehr sehen welchen Wert genau der rote Balken Mittwochs hat. Es gibt keinen Zugang zu den der Visualisierung zugrunde liegenden Daten, sodass niemand sie in verhältnis mit anderen Daten setzen kann oder anders darstellen kann.
+      </div>
+    </div>
+
+    <!-- Use Cases - Public use -->
+    <div class="step view" data-x="1000" data-y="1250">
+      <span class="page-number">3/31</span>
+      <h1>Motivation</h1>
+        <h2>Use Cases - Blogs</h2>
+
+      <img src="img/use_case_uniblog.png" style="width: 90%;">
+      <span class="img-src">Source: http://uniblog.rzblogs.uni-passau.de/2013/07/03/wahlbeteiligung-der-studierenden-steigt-uberall/</span>
+
+      <div class="notes">
+        In Blogs werden Daten veröffentlicht, wie hier die Wahlbeteiligung. Wer allerdings das Diagramm für dieses Jahr erstellen will muss erst wieder alle Werte in erfahrung bekommen.
+      </div>
+    </div>
+    <!-- Use Cases - Business -->
+    <div class="step view" data-x="1000" data-y="2000">
+      <span class="page-number">4/31</span>
+      <h1>Motivation</h1>
+        <h2>Use Cases - One Data</h2>
+
+      <img src="img/use_case_onedata.png" style="width: 90%; margin-top: 50px;">
+      <span class="img-src">Source: self-made</span>
+
+      <div class="notes">
+        Auch für Unternehmen, wie ONE LOGIC, ist es wichtig ihre Auswertungen mit Kunden zu teilen. Dabei kann es sich um livedaten handeln die sich regemäßig ändern oder bestimmte Punkte müssen hervorgehoben werden um sie besser zu kommuniziren.
+      </div>
+    </div>
+    <!-- Use Cases - Science -->
+    <div class="step view" data-x="1000" data-y="2750">
+      <span class="page-number">5/31</span>
+      <h1>Motivation</h1>
+        <h2>Use Cases - 42-Data</h2>
+
+      <img src="img/use_case_42data.png" style="width: 90%;">
+      <span class="img-src">Source: http://42-data.org</span>
+
+      <div class="notes">
+        Im 42-data Projekt geht es darum das Wissenschaftler Fragen mit Datenquellen und einer entsprechenden Visualisierung beantworten. Gerade hier wäre es sinnvoll anderen die Möglichkeit zu geben aus den Daten andere Diagramme zu erstellen um die Fragen noch passender zu beantworten.
+      </div>
+    </div>
+    <!-- Use Cases - Visual analytics -->
+    <div class="step view" data-x="1000" data-y="3500">
+      <span class="page-number">6/31</span>
+      <h1>Motivation</h1>
+        <h2>Use Cases - Visual Analytics</h2>
+
+      <img src="img/use_case_codevis.png" style="width: 47%;">
+      <span class="img-src">Source: http://code.know-center.tugraz.at/vis</span>
+
+      <div class="notes">
+        Im Titel meiner Arbeit kommt außerdem Visual Analytics vor, dabei geht es darum Erkenntnis aus daten zu ziehen indem man sie von verschiedenen Blickwinkeln betrachtet. In diesem Beispiel werden durch eine Selektion im ersten Diagramm die korrespondierenden Punkte im zweiten Diagramm hervorgehoben.
+      </div>
+    </div>
+
+    <!-- Requirements -->
+    <div class="step view" data-x="1000" data-y="4250">
+      <span class="page-number">7/31</span>
+      <h1>Motivation</h1>
+        <h2>Requirements</h2>
+
+      <h3 style="margin-top: 40px">Supported Chart Types</h3>
+      <ul>
+        <li><b>Combination</b> Charts</li>
+        <li>Expandable with <b>own</b> visualizations</li>
+      </ul>
+
+      <h3>Data Source</h3>
+      <ul>
+        <li>Possibility to <b>specify</b> the data</li>
+        <li><b>JSON</b> data for configuration</li>
+      </ul>
+
+      <h3>Scalability</h3>
+      <ul>
+        <li><b>Multiple views</b> can be shown simultaneously</li>
+      </ul>
+
+      <div class="notes">
+        Um ein Tool zu finden, dass in all diesen Scenarien eingesetzt werden kann habe die Anforderungen dafür gesammelt und werde die wichtigsten jetzt kurz vorstellen.<br/>
+        Besonders wichtig finde ich kombinationen von mehreren Diagrammen, zum Beispiel ein Punktdiagramm mit einer Trendline. Es ist unmöglich im vorhinein alle je benötigten Diagrammtypen einzubauen, deshalb muss das System erweiterbar sein.<br/>
+        Das Format der zu grunde liegenden Daten ist nicht entscheidend, da man sie meist in ein benötigtes Format konvertieren kann. Allerdings sollten die Daten spezifizierbar sein, sodass Währungen oder ein Datum richtig dargestellt werden können.<br/>
+        Es sollte natürlich nicht ausgeschlossen sein mehrer Diagramme gleichzeitig anzuzeigen.
+      </div>
+    </div>
+
+    <!-- Requirements -->
+    <div class="step view" data-x="1000" data-y="5000">
+      <span class="page-number">8/31</span>
+      <h1>Motivation</h1>
+        <h2>Requirements</h2>
+
+      <h3 style="margin-top: 40px">Reusability and Integration</h3>
+      <ul>
+        <li>The configuration and <b>state</b> of a chart can be saved</li>
+        <li>Chart interactions provide <b>hooks</b> for reuse</li>
+        <li>Support of different <b>screen sizes</b></li>
+      </ul>
+        
+      <h3>Interaction</h3>
+      <ul>
+        <li><b>In-place editing</b> of axes and chart type</li>
+        <li><b>Selections</b> and <b>annotations</b></li>
+      </ul>
+
+      <div class="notes">
+
+      </div>
+    </div>
+
+
+  <!-- STATE OF THE ART -->
+    <div class="step chapter" data-x="2500" data-y="-1000">
+      <h1 style="font-size: 111px;">State of the art</h1>
+
+      <div class="notes">
+        
+      </div>
+    </div>
+
+    <!-- Commercial Libraries -->
+    <div class="step view" data-x="2500" data-y="-250">
+      <span class="page-number">9/31</span>
+      <h1>State of the art</h1>
+        <h2>Commercial Libraries</h2>
+
+        <img style="float:left; width: 300px;" src="img/logo_highcharts.png" />
+        <img style="float:right;" src="img/logo_fusioncharts.gif" />
+
+      <img src="img/fusioncharts_sample.png" style="margin-top: 30px;">
+      <span class="img-src">Source: http://www.fusioncharts.com/</span>
+
+      <div class="notes">
+        Adress businesses with dashboard solutions, maps...
+      </div>
+    </div>
+
+    <!-- Free Libraries (1) -->
+    <div class="step firststep view" data-x="2500" data-y="500">
+      <span class="page-number">10/31</span>
+      <h1>State of the art</h1>
+        <h2>Free Libraries</h2>
+
+      <img src="img/chart_frameworks.png" style="margin-top: 30px;">
+      <span class="img-src">Source: https://en.wikipedia.org/wiki/Comparison_of_JavaScript_charting_frameworks</span>
+
+      <div class="notes">
+        
+      </div>
+    </div>
+
+    <!-- Free Libraries (2) -->
+    <div class="step secondstep view" data-x="2500" data-y="500">
+      <span class="page-number">11/31</span>
+      <h1>State of the art</h1>
+        <h2>Free Libraries</h2>
+
+        <h3 style="margin-top: 30px;">Google Charts</h3>
+        <ul>
+          <li>Known form Google analytics</li>
+        </ul>
+
+        <h3>Chart.js</h3>
+        <ul>
+          <li>Simple API, lots of users</li>
+        </ul>
+        
+        <h3>Flot</h3>
+        <ul>
+          <li>jQuery library, HTML5 canvas</li>
+        </ul>
+        
+       <h3>D3.js</h3>
+        <ul>
+          <li>All kinds of visualizations</li>
+        </ul>
+         
+      <div class="notes">
+        <ul>
+          <li>Google Chart - Google Analytics</li>
+          <li>Chart.js very easy to use, lots of users</li>
+          <li>Flot - jQuery, HTML5 canvas</li>
+          <li>D3.js - All kinds of visualizations</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="step view" data-x="2500" data-y="1250">
+      <span class="page-number">12/31</span>
+      <h1>State of the art</h1>
+        <h2>Comparison</h2>
+
+        <div style="position:absolute; right:0; top: 0; font-size: 24px" class="compare-library">
+          <span>Legend</span><br/>
+          <span class="label label-warning">important</span>
+          <span class="label label-success">supported</span>
+          <span class="label label-danger">unsupported</span>
+        </div>
+
+        <h3>Highcharts</h3>
+        <span class="label label-warning">paid</span>
+        <span class="label label-success">> 90 charts</span>
+        <span class="label label-success">custom charts</span>
+
+        <span class="label label-success">SVG</span>
+
+        <span class="label label-danger">no selections / annotations</span>
+
+
+
+        <h3 style="padding-top: 20px;">FusionCharts</h3>
+        <span class="label label-warning">paid</span>
+        <span class="label label-danger">no custom charts</span>
+
+        <span class="label label-success">SVG</span>
+
+        <span class="label label-danger">no selections</span>
+        <span class="label label-success">annotations</span>
+
+
+
+        <h3 style="padding-top: 20px;">Google Charts</h3>
+        <span class="label label-danger">no custom charts</span>
+        <span class="label label-success">data schema</span>
+
+        <span class="label label-success">SVG</span>
+
+        <span class="label label-success">selections</span>
+        <span class="label label-success">annotations</span>
+
+
+
+        <h3 style="padding-top: 20px;">Chart.js</h3>
+        <span class="label label-success">custom charts</span>
+        <span class="label label-danger">no events</span>
+
+        <span class="label label-success">HTML5</span>
+
+        <span class="label label-danger">no selections</span>
+        <span class="label label-danger">no annotations</span>
+
+
+
+        <h3 style="padding-top: 20px;">Flot</h3>
+        <span class="label label-success">custom charts</span>
+
+        <span class="label label-danger">no SVG</span>
+
+        <span class="label label-success">selections</span>
+        <span class="label label-danger">no annotations</span>
+
+
+
+        <h3 style="padding-top: 20px;">D3.js</h3>
+        <span class="label label-success">custom charts</span>
+        <span class="label label-success">data schema</span>
+
+        <span class="label label-success">SVG</span>
+
+        <span class="label label-success">selections</span>
+        <span class="label label-success">annotations</span>
+
+
+
+
+      <div class="notes">
+        Die wichtigsten positiven/negativen, komplette tabelle zu groß.<br/>
+        Zeilenweise durchgehen
+      </div>
+    </div>
+
+
+  <!-- APPROACH -->
+    <div class="step chapter" data-x="4000" data-y="-1000">
+      <h1>Approach</h1>
+
+      <div class="notes">
+        
+      </div>
+    </div>
+
+    <!-- D3 -->
+    <div id="d3" class="step view" data-x="4000" data-y="-250">
+      <span class="page-number">13/31</span>
+      <h1>Approach</h1>
+        <h2>Methodology - D3.js</h2>
+
+      <div id="collision">
+        <img id="d3Logo" src="img/d3_logo.png" onclick="paint()">
+      </div>
+
+      <div class="notes">
+        D3.js (Data-Driven Documents) is a JavaScript library for manipulating documents based on data. It can be used for any kinds of visualization and DOM manipulation. It can be a lot more than required in my work
+      </div>
+    </div>
+
+    <!-- C3 -->
+    <div id="c3" class="step view" data-x="4000" data-y="500">
+      <span class="page-number">14/31</span>
+      <h1>Approach</h1>
+        <h2>Methodology - C3.js</h2>
+
+      <div class='chart' style="margin-top: 55px;">
+        <div id='message' style="margin:auto;">
+          <a class='btn btn-default' onclick='startDemo();'>Start Demo</a>
+        </div>
+        <div id='chart'></div>
+      </div>
+
+      <div class="notes">
+
+      </div>
+    </div>
+
+    <!-- Methodology - AngularJS -->
+    <div class="step view" data-x="4000" data-y="1250">
+      <span class="page-number">15/31</span>
+      <h1>Approach</h1>
+        <h2>Methodology - AngularJS</h2>
+
+
+      <div style="margin-top: 40px">
+        <div class="form-inline">
+        <label>Firstname:</label>
+        <input type="text" ng-model="user.firstname" placeholder="Enter a name" class=" form-control">
+        <br/>
+        <label>Lastname:</label>
+        <input type="text" ng-model="user.lastname" placeholder="Enter a name" class=" form-control">
+        <br/>
+        <hr>
+        <br/>
+        <h1>Hello{{user.firstname ? ' ' : ''}}{{user.firstname}}{{user.lastname ? ' ' : ''}}{{user.lastname}}!</h1>
+        
+        <div ng-show="user">
+          <br/>
+          <hr>
+          <br/>
+          user:
+          <code>{{user}}</code>
+        </div>
+        </div>
+      </div>
+
+      <div class="notes">
+        AngularJS lives in the DOM and does not manipulate it from outside, like jQuery. Diget circle checks for changes.
+        Two way databinding
+      </div>
+    </div>
+
+    <!-- Technical Solution -->
+    <div class="step view" data-x="4000" data-y="2000" >
+      <span class="page-number">16/31</span>
+      <h1>Approach</h1>
+        <h2>Technical Solution</h2>
+
+      <span style="line-height: 50px">
+        <h3>Angular Directive:</h3>
+        <code>
+          &lt;angularChart options="options" dataset="dataset" schema="schema"&gt;&lt;/angularChart&gt;
+        </code>
+        <br/>
+        <br/>
+        <h3>Two-Way Data binding:</h3>
+        AngularJS <> angular-chart <> C3.js
+      </span>
+
+      <div class="notes">
+        create own tag, to have dom manipulation only in there, watch variables to redraw
+      </div>
+    </div>
+
+    <!-- Technical Solution -->
+    <div class="step view" data-x="4000" data-y="2750" >
+      <span class="page-number">17/31</span>
+      <h1>Approach</h1>
+        <h2>Technical Solution</h2>
+
+      <h3>JSON config</h3>
+      <pre  class="codeblock">
+{
+  'rows': [{
+    'key': 'sales',
+    'type': 'area-spline',
+    'axis': 'y',
+  }, {
+    'key': 'trend',
+    'show': false
+  }],
+  'xAxis': {
+    'key': 'date'
+  },
+  'annotation': [{
+    'axis': 'x',
+    'value': '10.10.2013',
+    'label': 'start'
+  }],
+  'type': 'line',
+  'zoom': {
+    range: [2, 4]
+  }
+}
+      </pre>
+      
+      <div class="notes">
+      </div>
+    </div>
+
+    <!-- angular-chart: chart type -->
+    <div class="step view" data-x="4000" data-y="3500">
+      <span class="page-number">18/31</span>
+      <h1>Approach</h1>
+        <h2>angular-chart: chart type</h2>
+
+      <div ng-controller="Controller">
+        <angularChart options="optionsChartType" dataset="dataset" schema="schema"></angularChart>
+        
+        options.type: <code style="font-size:24px">{{optionsChartType.type}}</code><br/>
+      </div>
+
+      <div class="notes">
+        my chart
+      </div>
+    </div>
+
+    <!-- angular-chart: legend -->
+    <div class="step view" data-x="4000" data-y="4250">
+      <span class="page-number">19/31</span>
+      <h1>Approach</h1>
+        <h2>angular-chart: legend</h2>
+
+      <div ng-controller="Controller">
+        <angularChart options="optionsRows" dataset="dataset" schema="schema"></angularChart>
+      
+        options.xAxis.rows[0].type: <code style="font-size:24px">{{optionsRows.rows[0].type}}</code><br/>
+        options.xAxis.rows[3].show: <code style="font-size:24px">{{optionsRows.rows[4].show}}</code><br/>
+        options.xAxis.rows[3].axis: <code style="font-size:24px">{{optionsRows.rows[4].axis}}</code><br/>
+      </div>
+
+      <div class="notes">
+        my chart
+      </div>
+    </div>
+    <!-- angular-chart: xAxis -->
+    <div class="step view" data-x="4000" data-y="5000">
+      <span class="page-number">20/31</span>
+      <h1>Approach</h1>
+        <h2>angular-chart: xAxis</h2>
+
+      <div ng-controller="Controller">
+        <angularChart options="optionsXAxis" dataset="dataset" schema="schema"></angularChart>
+
+        options.xAxis.key: <code style="font-size:24px">{{optionsXAxis.xAxis.key}}</code>
+
+      </div>
+
+      <div class="notes">
+        my chart
+      </div>
+    </div>
+    <!-- angular-chart: zoom -->
+    <div class="step view" data-x="4000" data-y="5750">
+      <span class="page-number">21/31</span>
+      <h1>Approach</h1>
+        <h2>angular-chart: zoom</h2>
+
+      <div ng-controller="Controller">
+        <angularChart options="optionsZoom" dataset="dataset" schema="schema"></angularChart>
+      
+        options.zoom:<br/>
+        <code style="font-size:24px">{{optionsZoom.zoom}}</code>
+      </div>
+
+      <div class="notes">
+        my chart
+      </div>
+    </div>
+    <!-- angular-chart: annotations -->
+    <div class="step view" data-x="4000" data-y="6500">
+      <span class="page-number">22/31</span>
+      <h1>Approach</h1>
+        <h2>angular-chart: annotations</h2>
+
+      <div ng-controller="Controller">
+        <angularChart options="optionsAnnotations" dataset="dataset" schema="schema"></angularChart>
+        
+        opt.annotation[0]: <code style="font-size:24px">{{optionsAnnotations.annotation[0]}}</code>
+        opt.annotation[1]: <code style="font-size:24px">{{optionsAnnotations.annotation[1]}}</code>
+      </div>
+
+      <div class="notes">
+        my chart
+      </div>
+    </div>
+
+  <!-- EVALUATION -->
+    <div class="step chapter" data-x="5500" data-y="-1000">
+      <h1>Evaluation</h1>
+
+      <div class="notes">
+        eval
+      </div>
+    </div>
+
+    <!-- Thinking Aloud - Users -->
+    <div class="step view" data-x="5500" data-y="-250">
+      <span class="page-number">23/31</span>
+      <h1>User Evaluation</h1>
+        <h2>Thinking Aloud - Users</h2>
+        
+      Students, UI Developers, Data Scientists
+     
+      <img src="img/usability_sample.png" style="width: 95%;">
+      <span class="img-src">Source: http://www.ac4d.com/classes/201_open/03.AC4D_IDSE201_ThinkAloudProtocol.pdf</span>
+
+      <div class="notes">
+        Evaluating the usability by encouraging a user to think out loud.
+      </div>
+    </div>
+
+    <!-- Thinking Aloud - Setup -->
+    <div class="step view" data-x="5500" data-y="500">
+      <span class="page-number">24/31</span>
+      <h1>User Evaluation</h1>
+        <h2>Thinking Aloud - Setup</h2>
+        
+      <ul style="margin-top: 30px">
+        <li>User solves tasks</li>
+        <li>User thinks out loud</li>
+        <li>Screen / user video</li>
+        <li>Declaration of consent</li>
+        <li>Sample task</li>
+      </ul>
+     
+      <img src="img/usability_setup.png" style="width: 45%; float: right; margin-top: -50px;">
+      <span class="img-src">Source: http://www.ac4d.com/classes/201_open/03.AC4D_IDSE201_ThinkAloudProtocol.pdf</span>
+
+      <div class="notes">
+        Evaluating the usability by encouraging a user to think out loud.
+      </div>
+    </div>
+
+    <!-- Thinking Aloud - Setup -->
+    <div class="step view" data-x="5500" data-y="1250">
+      <span class="page-number">25/31</span>
+      <h1>User Evaluation</h1>
+        <h2>Thinking Aloud - Test</h2>
+                
+        <div ng-controller="Controller">
+          <angularChart options="options" dataset="dataset" schema="schema"></angularChart>
+        </div>
+
+      <div class="notes">
+        Show problems: Icons, tooltips, subchart
+
+      </div>
+    </div>
+
+    <!-- Thinking Aloud - Results -->
+    <div class="step view" data-x="5500" data-y="2000">
+      <span class="page-number">26/31</span>
+      <h1>User Evaluation</h1>
+        <h2>Thinking Aloud - Results</h2>
+
+      <h3 style="margin-top: 20px">Usability problems identified:</h3>
+      <ul>
+        <li>Icons are not clear</li>
+        <li>Tooltips missing</li>
+        <li>Subchart should be named Navigator</li>
+      </ul>
+
+      <h3>Feature wish list:</h3>
+      <ul>
+        <li>Change colors</li>
+        <li>Define axis scaling</li>
+        <li>Generate trend lines</li>
+      </ul>
+
+      <div class="notes">
+        User understood were actions can be performed.
+      </div>
+    </div>
+
+
+  <!-- FUTUR WORK -->
+    <div class="step chapter" data-x="7000" data-y="-1000">
+      <h1 style="font-size: 135px;">Future Work</h1>
+
+      <div class="notes">
+        
+      </div>
+    </div>
+
+    <!-- Fix bugs -->
+    <div class="step view" data-x="7000" data-y="-250">
+      <span class="page-number">27/31</span>
+      <h1>Future Work</h1>
+        <h2>Improve Usability</h2>
+        
+      <img src="img/future_bugs.png">
+      <span class="img-src">Source: self-made</span>
+
+      <div class="notes">
+        Box plots, stacked bar charts
+      </div>
+    </div>
+
+    <!-- More chart types -->
+    <div class="step view" data-x="7000" data-y="500">
+      <span class="page-number">28/31</span>
+      <h1>Future Work</h1>
+        <h2>More chart types</h2>
+        
+      <img src="img/boxplot.png">
+      <span class="img-src">Source: http://bl.ocks.org/jensgrubert/7789216</span>
+
+      <div class="notes">
+        Box plots, stacked bar charts
+      </div>
+    </div>
+
+    <!-- Image export -->
+    <div class="step view" data-x="7000" data-y="1250">
+      <span class="page-number">29/31</span>
+      <h1>Future Work</h1>
+        <h2>Chart Export</h2>
+        
+      <img src="img/future_export.png" style="margin-top: 65px">
+      <span class="img-src">Source: http://www.fusioncharts.com/explore/export-charts-as-images-and-PDF/</span>
+
+      <div class="notes">
+        Image for (facebook) preview<br/>
+        SVG to integrate without interactivity
+      </div>
+    </div>
+
+    <!-- Image export -->
+    <div class="step view" data-x="7000" data-y="2000">
+      <span class="page-number">30/31</span>
+      <h1>Future Work</h1>
+        <h2>Server Integration</h2>
+        
+      <img src="img/use_case_onedata.png" style="margin-top: 65px">
+      <span class="img-src">Source: self-made</span>
+
+      <div class="notes">
+        Image for (facebook) preview<br/>
+        SVG to integrate without interactivity
+      </div>
+    </div>
+    <!-- angular-chart: github -->
+    <div class="step view" data-x="7000" data-y="2750">
+      <span class="page-number">31/31</span>
+      <h1>angular-chart</h1>
+        <h2>Open Source Project</h2>
+
+        <img src="img/angular-chart.png" style="width: 70%;">
+        <span class="img-src">Source: https://github.com/maxklenk/angular-chart/</span>
+
+      <div class="notes">
+        Open Source, integration in package manger, CI, 100% coverage, Demo Seite
+      </div>
+    </div>
+
+
+  <!-- Overview -->
+  <div id="overview" class="step" data-x="4000" data-y="-500" data-scale="9">
+  
+  </div>
 
 </div>
 
-<!-- add hint to show how navigation works
+<!-- add hint to show how navigation works -->
 <div class="hint">
-    <p>Use a spacebar or arrow keys to navigate</p>
+  <p>Use a spacebar or arrow keys to navigate</p>
 </div>
 <script>
 if ("ontouchstart" in document.documentElement) { 
-    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+  document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
 }
 </script>
--->
 
-<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-<script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
-<script type="text/javascript" src="bower_components/c3/c3.min.js"></script>
-<script type="text/javascript" src="bower_components/angular-circular-navigation/angular-circular-navigation.js"></script>
-<script type="text/javascript" src="bower_components/angular-chart/angular-chart.js"></script>
+
 <script type="text/javascript" src="bower_components/impress.js/js/impress.js"></script>
-<script type="text/javascript" src="js/impressConsole.js"></script>
-<script type="text/javascript" src="js/data.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
 
 <script>
-    impress().init();
-    impressConsole().init();
+  impress().init();
+</script>
+
+<script type="text/javascript">
+var clicked = false; 
+var paint = function () {
+if (clicked) {
+  return;
+} else {
+  clicked = true;
+}
+d3.select("#d3Logo").remove();
+
+var w = 775,
+  h = 500;
+
+var nodes = d3.range(200).map(function() { return {radius: Math.random() * 12 + 4}; }),
+  color = d3.scale.category10();
+
+var force = d3.layout.force()
+  .gravity(0.05)
+  .charge(function(d, i) { return i ? 0 : -2000; })
+  .nodes(nodes)
+  .size([w, h]);
+
+var root = nodes[0];
+root.radius = 0;
+root.fixed = true;
+
+force.start();
+
+var svg = d3.select("#collision").append("svg:svg")
+  .attr("width", w)
+  .attr("height", h);
+
+svg.selectAll("circle")
+  .data(nodes.slice(1))
+  .enter().append("svg:circle")
+  .attr("r", function(d) { return d.radius - 2; })
+  .style("fill", function(d, i) { return color(i % 3); });
+
+force.on("tick", function(e) {
+  var q = d3.geom.quadtree(nodes),
+    i = 0,
+    n = nodes.length;
+
+  while (++i < n) {
+  q.visit(collide(nodes[i]));
+  }
+
+  svg.selectAll("circle")
+    .attr("cx", function(d) { return d.x; })
+    .attr("cy", function(d) { return d.y; });
+});
+
+svg.on("mousemove", function(call) {
+  var p1 = d3.mouse(this);
+  root.px = p1[0];
+  root.py = p1[1];
+  force.resume();
+});
+
+function collide(node) {
+  var r = node.radius + 16,
+    nx1 = node.x - r,
+    nx2 = node.x + r,
+    ny1 = node.y - r,
+    ny2 = node.y + r;
+  return function(quad, x1, y1, x2, y2) {
+  if (quad.point && (quad.point !== node)) {
+    var x = node.x - quad.point.x,
+      y = node.y - quad.point.y,
+      l = Math.sqrt(x * x + y * y),
+      r = node.radius + quad.point.radius;
+    if (l < r) {
+    l = (l - r) / l * .5;
+    node.x -= x *= l;
+    node.y -= y *= l;
+    quad.point.x += x;
+    quad.point.y += y;
+    }
+  }
+  return x1 > nx2
+    || x2 < nx1
+    || y1 > ny2
+    || y2 < ny1;
+  };
+}
+}
+</script>
+<script>
+var chart = c3.generate({
+  size: {
+    height: 350,
+    width: 900
+  },
+  data: {
+    columns: [
+      ['data1', 30, 200, 100, 400, 150, 250, 50, 100, 250]
+    ],
+    selection: {
+      enabled: true
+    }
+  }
+});
+
+window.addEventListener("impress:stepenter", function (event) {
+  if (event.target.id === 'd3') {
+    setTimeout(paint, 2000);
+  }
+  if (event.target.id === 'c3') {
+    stopDemo();
+    startDemo();
+  }
+  console.log(event);
+}, false);
+
+var defaultMessage = d3.select('#message').html(), currentIndex = 0, timer, duration = 1500, demos = [
+  // function () {
+  //   chart.load({
+  //     columns: [['data2', 100, 30, 200, 320, 50, 150, 230, 80, 150]]
+  //   })
+  //   setMessage('Load data2');
+  // },
+  function () {
+    chart.load({
+      columns: [['data2', 100, 30, 200, 320, 50, 150, 230, 80, 150],['data3', 70, 90, 170, 220, 100, 110, 130, 40, 50]]
+    })
+    setMessage('Load data3');
+  },
+  function () {
+    chart.load({
+      columns: [['data1', 300, 230, 400, 520, 230, 250, 330, 280, 250]]
+    })
+    setMessage('Update data1');
+  },
+  function () {
+    chart.flow({
+      columns: [
+        ['data1', 390, 400, 200],
+        ['data2', 230, 400, 520],
+        ['data3', 170, 220, 100]
+      ],
+      duration: 1000,
+    });
+    setMessage('Flow 4 data');
+  },
+  function () {
+    // wait for end of transition for flow
+  },
+  // function () {
+  //   chart.flow({
+  //     columns: [
+  //       ['data1', 190, 230]
+  //     ],
+  //   });
+  //   setMessage('Flow 2 data');
+  // },
+  // function () {
+  //   // wait for end of transition for flow
+  // },
+  // function () {
+  //   chart.load({
+  //     columns: [['data2', 30, 50, 90, 120, 40, 50, 80, 70, 50]]
+  //   })
+  //   setMessage('Update data2');
+  // },
+  function () {
+    chart.transform('bar');
+    setMessage('Show as bar chart');
+  },
+  function () {
+    chart.groups([['data2','data3']]);
+    setMessage('Grouping data2 and data3');
+  },
+  function () {
+    chart.groups([['data1', 'data2', 'data3']]);
+    setMessage('Grouping data1, data2 and data3');
+  },
+  function () {
+    chart.groups([['data2', 'data3']]);
+    chart.transform('line', 'data1');
+    setMessage('Show data1 as line');
+  },
+  function () {
+    chart.select(['data1'], [2]);
+    setMessage('Select point for index 2 of data1');
+  },
+  function () {
+    chart.select(['data1'], [4,6]);
+    setMessage('Select point for index 4,6 of data1');
+  },
+  function () {
+    chart.unselect();
+    setMessage('Unselect points');
+  },
+  function () {
+    chart.focus('data2');
+    setMessage('Focus on data2');
+  },
+  // function () {
+  //   chart.focus('data3');
+  //   setMessage('Focus on data3');
+  // },
+  function () {
+    chart.revert();
+    setMessage('Defocus');
+  },
+  
+  function () {
+    chart.regions([{start:1,end:3}]);
+    setMessage('Add region from 1 to 3');
+    },
+  function () {
+    chart.regions.add([{start:6}]);
+    setMessage('Add region from 6 to end');
+  },
+  function () {
+    chart.regions([]);
+    setMessage('Clear regions');
+  },
+  function () {
+    chart.xgrids([{value: 1, text:'Label 1'}, {value: 4, text: 'Label 4'}]);
+    setMessage('Add x grid lines for 1, 4');
+  },
+  function () {
+    chart.ygrids.add([{value: 450, text:'Label 450'}]);
+    setMessage('Add y grid lines for 450');
+  },
+  function () {
+    chart.xgrids.remove({value: 1});
+    chart.xgrids.remove({value: 4});
+    setMessage('Remove grid lines for 1, 4');
+  },
+  function () {
+    chart.ygrids.remove({value: 450});
+    setMessage('Remove grid line for 450');
+  },
+  
+  function () {
+    chart.unload({
+      ids: 'data3'
+    });
+    setMessage('Unload data3');
+  },
+  function () {
+    chart.unload({
+      ids: 'data2'
+    });
+    setMessage('Unload data2');
+  },
+  function () {
+    chart.transform('line', ['data1', 'data2', 'data3']);
+    chart.groups([['data1'], ['data2'], ['data3']]);
+    chart.load({
+      columns: [['data1', 30, 200, 100, 400, 150, 250, 50, 100, 250]]
+    })
+    setMessage('Starting Demo..');
+  }
+];
+
+function setMessage(message) {
+  document.getElementById('message').innerHTML = '<a id="demoMessage" class="btn btn-lg btn-default small secondary" onclick="stopDemo();" title="Stop Demo" onclick="stopDemo();">'+message+'</a>';
+//        $('#demoMessage').tooltip('toggle');
+}
+
+function startDemo() {
+  setMessage('Starting Demo..');
+  timer = setInterval(function(){
+    if (currentIndex == demos.length) currentIndex = 0;
+    demos[currentIndex++]();
+  }, duration);
+}
+
+function stopDemo() {
+  clearInterval(timer);
+  document.getElementById('message').innerHTML = defaultMessage;
+}
+;
 </script>
 
 </body>
